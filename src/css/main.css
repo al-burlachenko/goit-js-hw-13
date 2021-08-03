@@ -55,6 +55,10 @@ button {
   border-left: none;
   cursor: pointer;
 
+  background-image: url('../images/search.svg#icon-search');
+  background-repeat:no-repeat;
+  background-position: 50% 50%;
+
   border-top: solid 2px #6589df;
   border-bottom: solid 2px #6589df;
 
