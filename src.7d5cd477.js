@@ -5,4 +5,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{"../index":"Focm"}],"Focm":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.modalClsBtn=exports.lightboxOverlay=exports.lightboxImage=exports.lightbox=exports.gallery=void 0,require("./css/main.css");var e=require("./js/modalInterface");const t=document.querySelector(".js-gallery");exports.gallery=t;const o=document.querySelector(".js-lightbox");exports.lightbox=o;const r=o.querySelector(".lightbox__image");exports.lightboxImage=r;const l=o.querySelector(".lightbox__overlay");exports.lightboxOverlay=l;const s=o.querySelector('button[data-action="close-lightbox"]');exports.modalClsBtn=s;
 },{"./css/main.css":"I7Ak","./js/modalInterface":"N48k"}]},{},["Focm"], null)
-//# sourceMappingURL=/goit-js-hw-13/src.eb384d61.js.map
+//# sourceMappingURL=/goit-js-hw-13/src.7d5cd477.js.map
