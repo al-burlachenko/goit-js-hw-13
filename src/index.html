@@ -12,9 +12,17 @@
     />
   </head>
   <body>
+    <header class="header">
+      <form class="search-form" id="search-form">
+        <input type="text" name="searchQuery" autocomplete="off" placeholder="Search images..." />
+        <button type="submit">
+          <img src="./svg/search.svg#icon-search" alt="" width="30px" />
 
-    <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
+          <!-- <svg><use href="./svg/search.svg#icon-search"/></svg> -->
+        </button>
+      </form>
+    </header>
 
-    <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
+    <script src="./index.js"></script>
   </body>
 </html>
