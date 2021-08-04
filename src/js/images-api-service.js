@@ -1,3 +1,5 @@
+const axios = require('axios').default;
+
 const BASE_URL = 'https://pixabay.com/api/';
 const API_KEY = '22701944-f8f056c666d70ac6de5e1d35b';
 
@@ -11,8 +13,6 @@ const parameters = {
   per_page: 40,
 };
 
-// fetch(BASE_URL, parameters)
-
 export default class ImageCardsService {
   constructor() {
     this.searchQuery = '';
@@ -20,13 +20,13 @@ export default class ImageCardsService {
   }
 
   fetchCards() {
-    const url = `${BASE_URL}?key=${parameters.key}&q=${this.searchQuery}&image_type=${parameters.image_type}&orientation=${parameters.orientation}&safesearch=${parameters.safesearch}&page=${this.page}`;
+    const url = `${BASE_URL}?key=${parameters.key}&q=${this.searchQuery}&image_type=${parameters.image_type}&orientation=${parameters.orientation}&safesearch=${parameters.safesearch}&per_page=${parameters.per_page}&page=${this.page}`;
 
-    return fetch(url)
-      .then(response => response.json())
+    return axios
+      .get(url, parameters)
+      .then(response => response)
+      .then(response => response.data)
       .then(pictures => {
-        // this.increment();
-
         return pictures;
       });
   }
@@ -46,11 +46,4 @@ export default class ImageCardsService {
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
-
-  // get queryPage() {
-  //   return this.page;
-  // }
-  // set queryPage(newPage) {
-  //   this.page = newPage;
-  // }
 }

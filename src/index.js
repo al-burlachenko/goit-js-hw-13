@@ -1,6 +1,7 @@
 // import './css/utils/fontawesome.min.css'
 import './css/main.css';
 import ImageCardsService from './js/images-api-service';
+// import ImageCardsService from './js/images-api-service(old)';
 
 import { modalOpen, changeLightboxImage } from './js/modalInterface';
 
@@ -16,33 +17,19 @@ export const modalClsBtn = lightbox.querySelector('button[data-action="close-lig
 
 const imageCardsService = new ImageCardsService();
 
-// const searchBtn = document.querySelector('button[type="submit"]');
-// const inputField = document.querySelector('input[type="text"]');
 const loadMoreBtn = document.querySelector('.load-more');
 const searchForm = document.querySelector('.search-form');
+
+let cardsCounter = 0;
+let isAll = (cardsCounter = null);
 
 searchForm.addEventListener('submit', getNewCards);
 loadMoreBtn.addEventListener('click', uploadNewCards);
 
-// console.log(loadMoreBtn);
-// console.log(searchBtn);
-
-// function getOriginalImgData(event) {
-//   event.preventDefault();
-
-//   if (event.target === event.currentTarget) {
-//     return;
-//   }
-
-//   const src = event.target.dataset.source;
-//   const alt = event.target.getAttribute('alt');
-
-//   modalOpen(event);
-//   changeLightboxImage(src, alt);
-// }
-
 function getNewCards(event) {
   event.preventDefault();
+  loadMoreBtn.style.display = '';
+  cardsCounter = 0;
 
   imageCardsService.query = event.currentTarget.elements.searchQuery.value;
   imageCardsService.resetPage();
@@ -54,6 +41,9 @@ function getNewCards(event) {
     .then(imageCard => {
       clearGallery();
       appendImageCards(imageCard);
+      loadMoreBtn.style.display = 'flex';
+
+      checkCardsAmount(imageCard);
     });
 }
 
@@ -67,6 +57,7 @@ function uploadNewCards(event) {
       return imageCard;
     })
     .then(imageCard => {
+      checkCardsAmount(imageCard);
       appendImageCards(imageCard);
     });
 }
@@ -77,4 +68,14 @@ function appendImageCards(imageCard) {
 
 function clearGallery() {
   gallery.innerHTML = '';
+}
+
+function checkCardsAmount(imageCard) {
+  cardsCounter = cardsCounter + imageCard.hits.length;
+  isAll = cardsCounter < imageCard.totalHits;
+  console.log(isAll);
+  if (!isAll) {
+    loadMoreBtn.style.display = '';
+  }
+  return isAll;
 }

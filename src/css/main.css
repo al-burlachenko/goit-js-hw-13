@@ -28,8 +28,11 @@ button[type='submit'] {
   /* outline: 1px solid black; */
 }
 
-button[type='button'] {
-  display: flex;
+.load-more {
+  /* display: flex; */
+  display: none;
+
+
   justify-content: center;
   align-items: center;
 
@@ -67,7 +70,7 @@ button[type='button'] {
 }
 
 .gallery-section {
-  outline: 3px solid red;
+  /* outline: 3px solid red; */
 
   display: flex;
   align-items: center;
