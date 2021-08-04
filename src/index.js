@@ -5,6 +5,8 @@ import imageCardTpl from './templates/image-card.hbs';
 
 // import ImageCardsService from './js/images-api-service(old)';
 require('handlebars');
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const gallery = document.querySelector('.js-gallery');
 const imageCardsService = new ImageCardsService();
@@ -18,8 +20,11 @@ let isAll = (cardsCounter = null);
 searchForm.addEventListener('submit', getNewCards);
 loadMoreBtn.addEventListener('click', uploadNewCards);
 
+var lightbox = new SimpleLightbox('.photo-card a');
+
 function getNewCards(event) {
   event.preventDefault();
+
   loadMoreBtn.style.display = '';
   cardsCounter = 0;
 
@@ -38,8 +43,9 @@ function getNewCards(event) {
 
     appendImageCards(imageCard);
     loadMoreBtn.style.display = 'flex';
-
     checkCardsAmount(imageCard);
+    console.log('Ща должен быть рефреш')
+    lightbox.refresh();
   });
 }
 
@@ -55,6 +61,7 @@ function uploadNewCards(event) {
     .then(imageCard => {
       checkCardsAmount(imageCard);
       appendImageCards(imageCard);
+      lightbox.refresh();
     });
 }
 
