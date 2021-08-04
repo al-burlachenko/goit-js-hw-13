@@ -19,26 +19,29 @@ export default class ImageCardsService {
     this.page = 1;
   }
 
-  fetchCards() {
+  async fetchCards() {
     const url = `${BASE_URL}?key=${parameters.key}&q=${this.searchQuery}&image_type=${parameters.image_type}&orientation=${parameters.orientation}&safesearch=${parameters.safesearch}&per_page=${parameters.per_page}&page=${this.page}`;
 
-    return axios
-      .get(url, parameters)
-      .then(response => response)
-      .then(response => {
-        // if (!response.ok) {
-        //   throw new Error(response.status);
-        // }
-        return response.data;
-      })
-      .then(pictures => {
-        return pictures;
-      });
+
+    // return axios.get(url)
+    //   .then(response => response)
+    //   .then(response => {
+    //     return response.data;
+    //   })
+    //   .then(pictures => {
+    //     return pictures;
+    //   });
+
+    const response = await axios.get(url);
+    const responseData = await response.data;
+    const pictures = await responseData;
+    return pictures;
+    
   }
 
   increment() {
     this.page += 1;
-    console.log(this.page);
+    // console.log(this.page);
   }
 
   resetPage() {
