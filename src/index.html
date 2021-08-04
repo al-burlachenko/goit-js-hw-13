@@ -14,7 +14,12 @@
   <body>
     <header class="header">
       <form class="search-form" id="search-form">
-        <input type="text" name="searchQuery" autocomplete="off" placeholder="Search images..." />
+        <input 
+          type="text" 
+          name="searchQuery" 
+          autocomplete="off" 
+          placeholder="Search images..." 
+        />
         <button type="submit">
           <!-- <img src="./images/search.svg#icon-search" alt="" width="30px" /> -->
 
@@ -23,21 +28,12 @@
       </form>
     </header>
 
-    <div class="gallery-section">
+    <main class="gallery-section">
       <div class="gallery js-gallery">
         <!-- Карточки изображений -->
-        <div style="width:50px; height:50px; background-color: blueviolet;"></div>
-        <div style="width:50px; height:50px; background-color: blueviolet"></div>
-        <div style="width:50px; height:50px; background-color: blueviolet"></div>
-        <div style="width:50px; height:50px; background-color: blueviolet"></div>
-        <div style="width:50px; height:50px; background-color: blueviolet"></div>
-        <div style="width:50px; height:50px; background-color: blueviolet"></div>
-        <div style="width:50px; height:50px; background-color: blueviolet"></div>
-
       </div>
-      <button type="button"></button>
-    </div>
-
+      <button type="button" class="load-more">Load more!</button>
+    </main>
 
     <div class="lightbox js-lightbox">
       <div class="lightbox__overlay"></div>

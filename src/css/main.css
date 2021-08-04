@@ -34,8 +34,10 @@ button[type='button'] {
   align-items: center;
 
   font-size: 17px;
-  width: 70px;
-  height: 20px;
+  width: 300px;
+  height: 30px;
+
+  margin-top: 20px;
 }
 
 *,
@@ -65,13 +67,15 @@ button[type='button'] {
 }
 
 .gallery-section {
+  outline: 3px solid red;
+
   display: flex;
-  align-items:flex-end;
-  justify-content:center;
+  align-items: center;
+  justify-content: center;
 
   flex-wrap: wrap;
   min-height: 100vh;
-  margin: 0;
+  margin: 0px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
     'Helvetica Neue', sans-serif;
   background-color: #fff;
@@ -79,17 +83,29 @@ button[type='button'] {
 }
 
 .gallery {
-  outline: 5px solid blue;
-
-  display: grid;
   width: 1200px;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  grid-auto-rows: 240px;
-  grid-gap: 12px;
-  padding: 0;
   list-style: none;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  margin-right: -20px;
+  margin-bottom: -20px;
+  margin-top: 20px;
+}
+
+img {
+  object-fit: cover;
+}
+
+.photo-card {
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
 }
 
 .gallery__item {
@@ -192,8 +208,4 @@ button[type='button'] {
 .lightbox__button:hover,
 .lightbox__button:focus {
   background-color: rgba(0, 0, 0, 0.5);
-}
-
-.gallery-section {
-  outline: 1px solid red;
 }
