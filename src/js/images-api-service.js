@@ -22,7 +22,6 @@ export default class ImageCardsService {
   async fetchCards() {
     const url = `${BASE_URL}?key=${parameters.key}&q=${this.searchQuery}&image_type=${parameters.image_type}&orientation=${parameters.orientation}&safesearch=${parameters.safesearch}&per_page=${parameters.per_page}&page=${this.page}`;
 
-
     // return axios.get(url)
     //   .then(response => response)
     //   .then(response => {
@@ -33,10 +32,9 @@ export default class ImageCardsService {
     //   });
 
     const response = await axios.get(url);
-    const responseData = await response.data;
-    const pictures = await responseData;
+    const pictures = await response.data;
+
     return pictures;
-    
   }
 
   increment() {

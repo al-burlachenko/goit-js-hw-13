@@ -8,6 +8,9 @@ require('handlebars');
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
+const debounce = require('lodash.debounce');
+const DEBOUNCE_DELAY = 300;
+
 const gallery = document.querySelector('.js-gallery');
 const imageCardsService = new ImageCardsService();
 
@@ -17,7 +20,9 @@ const searchForm = document.querySelector('.search-form');
 let cardsCounter = 0;
 let isAll = (cardsCounter = null);
 
+// searchForm.addEventListener('submit', debounce(getNewCards, DEBOUNCE_DELAY));
 searchForm.addEventListener('submit', getNewCards);
+
 loadMoreBtn.addEventListener('click', uploadNewCards);
 
 var lightbox = new SimpleLightbox('.photo-card a');
