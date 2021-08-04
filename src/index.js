@@ -1,6 +1,8 @@
 // import './css/utils/fontawesome.min.css'
 import './css/main.css';
 import ImageCardsService from './js/images-api-service';
+import Notiflix from 'notiflix';
+
 // import ImageCardsService from './js/images-api-service(old)';
 
 import { modalOpen, changeLightboxImage } from './js/modalInterface';
@@ -40,6 +42,14 @@ function getNewCards(event) {
     })
     .then(imageCard => {
       clearGallery();
+      if (imageCard.hits.length === 0) {
+        console.log(imageCard.hits.length)
+        Notiflix.Notify.failure(
+          'Sorry, there are no images matching your search query. Please try again.',
+        )
+        return;
+      }
+
       appendImageCards(imageCard);
       loadMoreBtn.style.display = 'flex';
 
@@ -76,6 +86,7 @@ function checkCardsAmount(imageCard) {
   console.log(isAll);
   if (!isAll) {
     loadMoreBtn.style.display = '';
+    Notiflix.Notify.warning("We're sorry, but you've reached the end of search results.");
   }
   return isAll;
 }
